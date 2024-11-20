@@ -9,9 +9,10 @@
         <Main class="container">
             <div class="main">
                 <h1>Password Generator</h1>
-                <div class="gen hidden" id="output"></div>
-                <div class="length" data-min="4" data-max="50">
-                    <div class="length__title" data-length='0'>length:</div>
+                <div class="gen" id="output"></div>
+                <div class="length" data-min="4" data-max="50" id="length">
+                    <div class="length__title" data-length='0'></div>
+                    length:
                     <input class="lengthSlider" id="lenSlider" type="range" min="1" max="50" value="12" />
                     <input class="lengthNumber" type="number" min="1" max="50" value="12" />
                 </div>
@@ -35,12 +36,24 @@
                     </label>
 
                     <label class="switch">
-  
                         <input type="checkbox" id="symbols" name="symbols" role="switch"  >
                         <span class="slider round"></span>
                         Symbols
-                        
                     </label>
+
+                </div>
+                <div class="length hidden" data-min="4" data-max="50" data-min="1" id="min">
+                    <div class="length__title" data-length='0'></div>
+                    Min Numbers:
+                    <input class="lengthSlider" id="minSlider" type="range" min="1"/>
+                    <input class="lengthNumber" type="number" min="1" id="minNumber"/>
+                    
+                </div>
+                <div class="length hidden" data-min="4" data-max="50" data-min="1" id="max">
+                    <div class="length__title" data-length='0'></div>
+                    Max Numbers:
+                    <input class="lengthSlider" id="maxSlider" type="range" oninput = "changeMin(this.value)"/>
+                    <input class="lengthNumber" type="number"  id="maxNumber"/>
                 </div>
             </div>
             <button class="genBtn">Generate</button>

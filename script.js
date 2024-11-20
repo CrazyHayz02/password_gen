@@ -6,6 +6,12 @@ const lower = document.querySelector('#lower');
 const digit = document.querySelector('#digit');
 const symbols = document.querySelector('#symbols');
 const button = document.querySelector('.genBtn');
+const hidden = document.querySelector('#min.hidden');
+const hidden2 = document.querySelector('#max.hidden');
+const minSlider = document.querySelector('#minSlider');
+const minNumber = document.querySelector('#minNumber');
+const maxSlider = document.querySelector('#maxSlider');
+const maxNumber = document.querySelector('#maxNumber');
 
 
 
@@ -14,7 +20,48 @@ console.log(slider);
 console.log(number);
 
 slider.addEventListener('input', function (e) { number.value = e.target.value; });
-number.addEventListener('input', function (e) { slider.value = e.target.value; });
+number.addEventListener('input', function (e) { slider.value = e.target.value; 
+		const passLeng = number.value;
+		const max = passLeng;
+		const current = Math.round(max/4);
+		minSlider.setAttribute("max", ""+max+"");
+		minNumber.setAttribute("max", ""+max+"");
+		minSlider.setAttribute("value", ""+current+"");
+		minNumber.setAttribute("value", ""+current+"");
+		const min = minNumber.value;
+		maxSlider.setAttribute("max", ""+max+"");
+		maxSlider.setAttribute("min", ""+min+"");
+		maxNumber.setAttribute("max", ""+max+"");
+		maxNumber.setAttribute("min", ""+min+"");
+		maxSlider.setAttribute("value", ""+current+"");
+		maxNumber.setAttribute("value", ""+current+"");
+});
+
+var n = scaleValue(0, [-360,+360], [-1,1]);
+
+function scaleValue(value, from, to) {
+	var scale = (to[1] - to[-1]) / (from[1] - from[-1]);
+	var capped = Math.min(from[1], Math.max(from[1], value)) - from[0];
+}
+
+minSlider.addEventListener('input', function (e) { minNumber.value = e.target.value; });
+minNumber.addEventListener('input', function (e)  { 
+	minSlider.value = e.target.value; const min = minNumber.value;
+	maxSlider.setAttribute("min", ""+min+"");
+	maxNumber.setAttribute("min", ""+min+"");
+	maxSlider.setAttribute("value", ""+min+"");
+	maxNumber.setAttribute("value", ""+min+"");
+});
+
+var n = scaleValue(0, [-360,+360], [-1,1]);
+
+function scaleValue(value, from, to) {
+	var scale = (to[1] - to[-1]) / (from[1] - from[-1]);
+	var capped = Math.min(from[1], Math.max(from[1], value)) - from[0];
+}
+
+maxSlider.addEventListener('input', function (e) { maxNumber.value = e.target.value; });
+maxNumber.addEventListener('input', function (e) { maxSlider.value = e.target.value; });
 
 var n = scaleValue(0, [-360,+360], [-1,1]);
 
@@ -76,6 +123,37 @@ button.addEventListener("click", () => {
 	if (isValid (capitalToggle, lowerToggle, digitToggle, symbolsToggle)) {
 		passGen(passLeng, capitalToggle, lowerToggle, digitToggle, symbolsToggle);
 	}
-	
-
 });
+	
+digit.addEventListener('change', () => {
+	const passLeng = number.value;
+	const max = passLeng;
+	const current = Math.round(max/4);
+	
+	
+    if (digit.checked) {
+		const passLeng = number.value;
+		const max = passLeng;
+		const current = Math.round(max/4);
+		minSlider.setAttribute("max", ""+max+"");
+		minNumber.setAttribute("max", ""+max+"");
+		minSlider.setAttribute("value", ""+current+"");
+		minNumber.setAttribute("value", ""+current+"");
+		const min = minNumber.value;
+		maxSlider.setAttribute("max", ""+max+"");
+		maxSlider.setAttribute("min", ""+min+"");
+		maxNumber.setAttribute("max", ""+max+"");
+		maxNumber.setAttribute("min", ""+min+"");
+		maxSlider.setAttribute("value", ""+current+"");
+		maxNumber.setAttribute("value", ""+current+"");
+		console.log(hidden);
+		console.log(hidden2);
+		hidden.style.display = "inline";
+		hidden2.style.display = "inline";
+
+	  } else  {
+		hidden.style.display = "none";
+		hidden2.style.display = "none";
+	  }
+});
+
