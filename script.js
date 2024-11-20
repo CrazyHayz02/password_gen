@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const slider = document.querySelector('.lengthSlider');
 const number = document.querySelector('.lengthNumber');
 const output = document.querySelector('#output');
@@ -7,16 +6,6 @@ const lower = document.querySelector('#lower');
 const digit = document.querySelector('#digit');
 const symbols = document.querySelector('#symbols');
 const button = document.querySelector('.genBtn');
-=======
-var slider = document.querySelector('.lengthSlider');
-var number = document.querySelector('.lengthNumber');
-var output = document.querySelector('#output');
-var capital = document.querySelector('#capital');
-var lower = document.querySelector('#lower');
-var digit = document.querySelector('#digit');
-var output = document.querySelector('#symbols');
-var output = document.querySelector('.genBtn');
->>>>>>> e76c2d9391b465944208f21ed571fcddeacbdd72
 
 
 
@@ -32,7 +21,6 @@ var n = scaleValue(0, [-360,+360], [-1,1]);
 function scaleValue(value, from, to) {
 	var scale = (to[1] - to[-1]) / (from[1] - from[-1]);
 	var capped = Math.min(from[1], Math.max(from[1], value)) - from[0];
-<<<<<<< HEAD
 }
 
 const isValid = (capitalValid, lowerValid, digitValid, symbolsValid) => {
@@ -91,8 +79,3 @@ button.addEventListener("click", () => {
 	
 
 });
-=======
-  console.log(capped);
-
-}
->>>>>>> e76c2d9391b465944208f21ed571fcddeacbdd72
