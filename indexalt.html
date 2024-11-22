@@ -42,11 +42,24 @@
                     </label>
 
                 </div>
+                <div class="length hidden" data-min="4" data-max="50" data-min="1" id="min">
+                    <div class="length__title" data-length='0'></div>
+                    Min Numbers:
+                    <input class="lengthSlider" id="minSlider" type="range" min="1"/>
+                    <input class="lengthNumber" type="number" min="1" id="minNumber"/>
+                    
+                </div>
+                <div class="length hidden" data-min="4" data-max="50" data-min="1" id="max">
+                    <div class="length__title" data-length='0'></div>
+                    Max Numbers:
+                    <input class="lengthSlider" id="maxSlider" type="range" />
+                    <input class="lengthNumber" type="number"  id="maxNumber"/>
+                </div>
             </div>
             <button class="genBtn">Generate</button>
         </Main>
         
         
-        <script src="script.js"></script>
+        <script src="scriptalt.js"></script>
     </body>
 </html>
