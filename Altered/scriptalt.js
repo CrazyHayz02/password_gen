@@ -134,31 +134,56 @@ const passGen = (leng, capitalCheck, lowerCheck, digitCheck, symbolsCheck, minCh
 	let charLeft = leng;
 	let result = "";
 	if (capitalCheck) {
-		chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		const cap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		const capLength = cap.length;
+		result += cap.charAt(Math.floor(Math.random() * capLength));
+		chars += cap;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (lowerCheck) {
-		chars += "abcdefghijklmnopqrstuvwxyz";
+		const low = "abcdefghijklmnopqrstuvwxyz";
+		const lowLength = low.length;
+		result += low.charAt(Math.floor(Math.random() * lowLength));
+		chars += low;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (digitCheck) {
-		const numList = "0123456789";
-		const numCount = Math.floor(Math.random() * (maxCheck - minCheck + 1)) + minCheck;
-		charLeft = leng - numCount;
+		const num = "0123456789";
+		let numCount = leng;
+		console.log(capitalCheck || lowerCheck || symbolsCheck);
+		if (capitalCheck || lowerCheck || symbolsCheck){
+			numCount = Math.floor(Math.random() * (maxCheck - minCheck + 1)) + minCheck;
+		}
 
 		console.log(numCount);
-		const numListLength = numList.length;
+		charLeft -= numCount;
+		
+		const numLength = num.length;
 		for (let i = 1; i <= numCount; i++) {
-			result += numList.charAt(Math.floor(Math.random() * numListLength))
+			result += num.charAt(Math.floor(Math.random() * numLength));
 		}
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (symbolsCheck) {
-		chars += "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
+		const sym = "!@~$%^&*";
+		const symLength = sym.length;
+		result += sym.charAt(Math.floor(Math.random() * symLength));
+		chars += sym;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 
 
 	const charsLength = chars.length;
 	
 	for (let i = 1; i <= charLeft; i++) {
-		result += chars.charAt(Math.floor(Math.random() * charsLength))
+		result += chars.charAt(Math.floor(Math.random() * charsLength));
 	}
 	console.log(result);
 	const resultSplit = result.split("");

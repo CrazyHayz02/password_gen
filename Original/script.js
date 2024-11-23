@@ -51,26 +51,56 @@ const isValid = (capitalValid, lowerValid, digitValid, symbolsValid) => {
 
 const passGen = (leng, capitalCheck, lowerCheck, digitCheck, symbolsCheck) => {
 	let chars = "";
+	let charLeft = leng;
+	let result = "";
 	if (capitalCheck) {
-		chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		const cap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		const capLength = cap.length;
+		result += cap.charAt(Math.floor(Math.random() * capLength));
+		chars += cap;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (lowerCheck) {
-		chars += "abcdefghijklmnopqrstuvwxyz";
+		const low = "abcdefghijklmnopqrstuvwxyz";
+		const lowLength = low.length;
+		result += low.charAt(Math.floor(Math.random() * lowLength));
+		chars += low;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (digitCheck) {
 		chars += "0123456789";
+		const charsLength = chars.length;
+		result += chars.charAt(Math.floor(Math.random() * charsLength));
+		chars += chars;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
 	if (symbolsCheck) {
-		chars += "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
+		const sym = "!@~$%^&*";
+		const symLength = sym.length;
+		result += sym.charAt(Math.floor(Math.random() * symLength));
+		chars += sym;
+		charLeft -= 1;
+		console.log(result);
+		console.log(charLeft);
 	}
-
+	
+	
 	const charsLength = chars.length;
-	let result = "";
 
-	for (let i = 1; i <= leng; i++) {
-		result += chars.charAt(Math.floor(Math.random() * charsLength))
+	for (let i = 1; i <= charLeft ; i++) {
+		result += chars.charAt(Math.floor(Math.random() * charsLength));
+		console.log(result);
 	}
-	output.innerHTML = result;
+	const resultSplit = result.split("");
+	resultSplit.sort(() => 0.5 - Math.random());
+	const scrambled = resultSplit.join("");
+	output.innerHTML = scrambled;
 };
 
 button.addEventListener("click", () => {
@@ -82,37 +112,5 @@ button.addEventListener("click", () => {
 	if (isValid (capitalToggle, lowerToggle, digitToggle, symbolsToggle)) {
 		passGen(passLeng, capitalToggle, lowerToggle, digitToggle, symbolsToggle);
 	}
-});
-	
-digit.addEventListener('change', () => {
-	const passLeng = number.value;
-	const max = passLeng;
-	const current = Math.round(max/4);
-	
-	
-    if (digit.checked) {
-		const passLeng = number.value;
-		const max = passLeng;
-		const current = Math.round(max/4);
-		minSlider.setAttribute("max", ""+max+"");
-		minNumber.setAttribute("max", ""+max+"");
-		minSlider.setAttribute("value", ""+current+"");
-		minNumber.setAttribute("value", ""+current+"");
-		const min = minNumber.value;
-		maxSlider.setAttribute("max", ""+max+"");
-		maxSlider.setAttribute("min", ""+min+"");
-		maxNumber.setAttribute("max", ""+max+"");
-		maxNumber.setAttribute("min", ""+min+"");
-		maxSlider.setAttribute("value", ""+current+"");
-		maxNumber.setAttribute("value", ""+current+"");
-		console.log(hidden);
-		console.log(hidden2);
-		hidden.style.display = "inline";
-		hidden2.style.display = "inline";
-
-	  } else  {
-		hidden.style.display = "none";
-		hidden2.style.display = "none";
-	  }
 });
 
